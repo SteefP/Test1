@@ -22,6 +22,7 @@ public class Baas {
 	String hobby;
 
 	@OneToOne
+	@JoinColumn(name = "id_hond")
 	Hond hond;
 	
 	
@@ -52,37 +53,25 @@ public class Baas {
 	public void setNaam(String naam) {
 		this.naam = naam;
 	}
-	@Override
-	public String toString() {
-		return "Baas [id=" + id + ", naam=" + naam + "]";
-	}
-
-
-
-
 	public String getHobby() {
 		return hobby;
 	}
-
-
-
-
 	public Hond getHond() {
 		return hond;
 	}
-
-
-
-
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
+	}
+	public void setHond(Hond hond) {
+		this.hond = hond;
 	}
 
 
 
 
-	public void setHond(Hond hond) {
-		this.hond = hond;
+	@Override
+	public String toString() {
+		return "Baas [id=" + id + ", naam=" + naam + ", hobby=" + hobby + ", hond=" + hond + "]";
 	}
 	
 }

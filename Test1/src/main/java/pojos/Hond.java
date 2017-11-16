@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 @Entity(name="Hond")
@@ -14,10 +15,12 @@ public class Hond {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	int id;
-	
-	
+		
 	String naam;
 
+	@OneToOne
+	Baas baas;
+	
 	
 	public Hond() {
 	}
