@@ -12,28 +12,61 @@ public class Application {
 		EntityManager em = entityManagerFactory.createEntityManager();
 
 		em.getTransaction().begin();
-
 		Baas baas = new Baas(0, "steef", "Gitaar");
 		Hond hond = new Hond(0, "Mickey");
-		baas.setHond(hond);
-		em.persist(hond);
-		em.persist(baas);		
+
+	baas.getHonden().add(hond);
+		
+
+		em.persist(hond);	
+		em.persist(baas);
+
+
 		em.getTransaction().commit();
 
-		Baas b = em.find(Baas.class, 1);
-		System.out.println("Eeste keer baas b"+b);
+		em.clear();
 
-
-
-
-
-
-
+		Hond h = em.find(Hond.class, 1);
+		Baas b =em.find(Baas.class, 1);
+		
 
 		em.close();
 
+		System.out.println(h);
 
 		System.exit(0);
 	}
 
 }
+/*
+
+ * 
+ * Baas baas = new Baas(0, "steef", "Gitaar");
+
+		Baas baas2 = new Baas(0, "Julia", "Kite");
+
+		Hond hond = new Hond(0, "Mickey");
+		Hond hond2 = new Hond(0, "Maickey");
+
+		baas2.getHonden().add(hond);
+		baas2.getHonden().add(hond);
+		baas2.getHonden().add(hond2);
+		baas.getHonden().add(hond2);
+		em.persist(hond);
+		em.persist(hond2);
+		em.persist(baas);
+		em.persist(baas2);	
+ * 
+ * 
+ */
+
+
+
+
+
+
+
+
+
+
+

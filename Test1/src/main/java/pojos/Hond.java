@@ -2,9 +2,12 @@ package pojos;
 
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
@@ -20,7 +23,7 @@ public class Hond {
 	String naam;
 
 	
-	@OneToOne(mappedBy = "hond")
+	@ManyToOne(fetch= FetchType.LAZY)
 	Baas baas;
 	
 	
@@ -45,9 +48,17 @@ public class Hond {
 		this.naam = naam;
 	}
 
+	
+	
+	public Baas getBaas() {
+		return baas;
+	}
+	public void setBaas(Baas baas) {
+		this.baas = baas;
+	}
 	@Override
 	public String toString() {
-		return "Hond [id=" + id + ", naam=" + naam + "]";
+		return "Hond [id=" + id + ", naam=" + naam + ", baas=" + baas + "]";
 	}
 
 	

@@ -2,6 +2,9 @@ package pojos;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -21,9 +24,12 @@ public class Baas {
 	
 	String hobby;
 
-	@OneToOne
-	@JoinColumn(name = "id_hond")
-	Hond hond;
+	
+	
+	
+	@OneToMany(mappedBy = "baas")
+	List<Hond> honden = new ArrayList<Hond>();
+
 	
 	
 	public Baas() {
@@ -56,14 +62,27 @@ public class Baas {
 	public String getHobby() {
 		return hobby;
 	}
-	public Hond getHond() {
-		return hond;
-	}
+	
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	public void setHond(Hond hond) {
-		this.hond = hond;
+	
+
+
+
+
+
+
+
+	public List<Hond> getHonden() {
+		return honden;
+	}
+
+
+
+
+	public void setHonden(List<Hond> honden) {
+		this.honden = honden;
 	}
 
 
@@ -71,7 +90,7 @@ public class Baas {
 
 	@Override
 	public String toString() {
-		return "Baas [id=" + id + ", naam=" + naam + ", hobby=" + hobby + ", hond=" + hond + "]";
+		return "Baas [id=" + id + ", naam=" + naam + ", hobby=" + hobby + ", honden=" + honden + "]";
 	}
 	
 }
