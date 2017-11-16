@@ -16,14 +16,14 @@ public class Application {
 		Baas baas = new Baas(0, "steef", "Gitaar");
 		Hond hond = new Hond(0, "Mickey");
 		baas.setHond(hond);
-em.persist(hond);
+		em.persist(hond);
 		em.persist(baas);		
 		em.getTransaction().commit();
 
 		Baas b = em.find(Baas.class, 1);
 		System.out.println("Eeste keer baas b"+b);
-		
-		
+
+
 
 
 
