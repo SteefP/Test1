@@ -8,7 +8,7 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.mycompany_hibernateBegin_jar_1.0-SNAPSHOTPU");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Hibernate");
 		EntityManager em = entityManagerFactory.createEntityManager();
 
 		em.getTransaction().begin();
