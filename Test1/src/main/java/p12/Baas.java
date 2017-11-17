@@ -1,4 +1,4 @@
-package pojos;
+package p12;
 
 
 
@@ -26,9 +26,9 @@ public class Baas {
 
 	
 	
-	
-	@OneToMany(mappedBy = "baas")
-	List<Hond> honden = new ArrayList<Hond>();
+	@JoinColumn(name="id_hond")
+	@OneToOne
+	Hond hond1;
 
 	
 	
@@ -66,23 +66,19 @@ public class Baas {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	
 
 
 
 
-
-
-
-	public List<Hond> getHonden() {
-		return honden;
+	public Hond getHond() {
+		return hond1;
 	}
 
 
 
 
-	public void setHonden(List<Hond> honden) {
-		this.honden = honden;
+	public void setHond(Hond hond) {
+		this.hond1 = hond;
 	}
 
 
@@ -90,7 +86,14 @@ public class Baas {
 
 	@Override
 	public String toString() {
-		return "Baas [id=" + id + ", naam=" + naam + ", hobby=" + hobby + ", honden=" + honden + "]";
+		return "Baas [id=" + id + ", naam=" + naam + ", hobby=" + hobby + ", hond=" + hond1 + "]";
 	}
+	
+
+
+
+
+
+
 	
 }

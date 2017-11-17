@@ -1,4 +1,4 @@
-package pojos;
+package p12;
 
 
 import javax.persistence.Entity;
@@ -22,9 +22,9 @@ public class Hond {
 		
 	String naam;
 
+	@OneToOne(mappedBy="hond1") //hiermee verwijderd zich de baas id in hond! wél kan de baas worden beriket van de hond
+	Baas baas;     //je schakeld dus eigenlijk een overbodige link uit omdat sql al bi-dirext is
 	
-	@ManyToOne(fetch= FetchType.LAZY)
-	Baas baas;
 	
 	
 	public Hond() {
@@ -47,20 +47,20 @@ public class Hond {
 	public void setNaam(String naam) {
 		this.naam = naam;
 	}
-
-	
-	
+	@Override
+	public String toString() {
+		return "Hond [id=" + id + ", naam=" + naam + "]";
+	}
 	public Baas getBaas() {
 		return baas;
 	}
 	public void setBaas(Baas baas) {
 		this.baas = baas;
 	}
-	@Override
-	public String toString() {
-		return "Hond [id=" + id + ", naam=" + naam + ", baas=" + baas + "]";
-	}
 
+	
+	
+	
 	
 	
 	
