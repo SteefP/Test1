@@ -8,27 +8,28 @@ import javax.persistence.Persistence;
 public class Application {
 
 	public static void main(String[] args) {
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Hibernate");
+		EntityManager em = entityManagerFactory.createEntityManager();
 
+		Hond hond = new Hond(0, "Mickey");
+		
+
+		GenericDao<Hond> honddao = new GenericDao<Hond>(em);
+		honddao.add(hond);
+		
 		Baas baas = new Baas(0, "steef", "Gitaar");
-		GenericDao<Baas> baasdao = new GenericDao<Baas>();
+		baas.setHond(hond);
+		GenericDao<Baas> baasdao = new GenericDao<Baas>(em);
 		baasdao.add(baas);
 		
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		Hond hond = new Hond(0, "Mickey");
-	
-
-		GenericDao<Hond> honddao = new GenericDao<Hond>();
-		honddao.add(hond);
-		/*
+		
 		
 
+		em.close();
+		
 
+/*
 
 	
 

@@ -5,15 +5,20 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class GenericDao<T> {
-
 	
+	EntityManager em;
+	
+	public GenericDao(EntityManager em) {
+		this.em = em;
+	}
+
+
+
 
 
 	public void add(T pojo){
 		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Hibernate");
-		EntityManager em = entityManagerFactory.createEntityManager();
-
+		
 		
 		
 		em.getTransaction().begin();
@@ -23,7 +28,7 @@ public class GenericDao<T> {
 	
 	
 
-		em.close();
+	
 	
 		
 	}
